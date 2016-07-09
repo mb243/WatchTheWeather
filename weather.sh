@@ -76,6 +76,10 @@ pop_2=`$XMLTF/forecastday[2]/pop wx_forecast.xml`
 title_3=`$XMLTF/forecastday[3]/title wx_forecast.xml | tr '[:lower:]' '[:upper:]'`
 fcttext_3=`$XMLTF/forecastday[3]/fcttext wx_forecast.xml`
 
+# handle some malformed or invalid data
+if [[ "$precip_today" == "-999.00" ]]; then precip_today="--"; fi
+if [[ "$precip_1hr" == "-999.00" ]]; then precip_1hr="--"; fi
+
 #display report 
 #
 #sometimes wunderground omits data from the xml forecast or sends back a malformed
